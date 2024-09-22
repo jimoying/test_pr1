@@ -1,0 +1,12 @@
+
+--
+情况1-upstream未修改过代码:
+用户A -> 创建项目:main																			merged 用户A:main <- 用户B:blk
+		  ↓																						  ↑
+用户B -> fork -> 拉取代码:main -> 创建新分支并切换:art -> 修改代码,并push到用户b的blk仓库里 -> 发起RP请求
+
+--
+情况2-upstream修改过代码:
+用户A -> 创建项目:main -> 用户A在中间修改过代码																														merged 用户A:main <- 用户B:blk
+		  ↓																						  																	  ↑
+用户B -> fork -> 拉取代码:main -> 创建新分支并切换:art -> 修改代码并提交本地 -> 同步fork来的上游仓库(pull upstream),并解决冲突 -> 2者一起push到用户b的blk仓库里 -> 发起RP请求
